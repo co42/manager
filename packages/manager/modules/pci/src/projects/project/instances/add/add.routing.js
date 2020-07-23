@@ -51,6 +51,11 @@ export default /* @ngInject */ ($stateProvider) => {
           projectId,
         }),
 
+      addPrivateNetworksLink: /* @ngInject */ ($state, projectId) =>
+        $state.href('pci.projects.project.privateNetwork', {
+          projectId,
+        }),
+
       goBack: /* @ngInject */ (goToInstances) => goToInstances,
 
       prices: /* @ngInject */ (
