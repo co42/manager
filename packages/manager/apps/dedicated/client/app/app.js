@@ -46,6 +46,7 @@ import { detach as detachPreloader } from '@ovh-ux/manager-preloader';
 import account from './account';
 import config from './config/config';
 import contactsService from './account/contacts/service/contacts-service.module';
+import dedicatedCloud from './dedicatedCloud';
 import dedicatedCloudDatacenterDrp from './dedicatedCloud/datacenter/drp';
 import dedicatedCloudDatacenterDashboardDeleteDrp from './dedicatedCloud/datacenter/dashboard/deleteDrp';
 import dedicatedUniverseComponents from './dedicatedUniverseComponents';
@@ -74,6 +75,7 @@ angular
       'controllers',
       contactsService,
       datacenterBackup,
+      dedicatedCloud,
       dedicatedCloudDatacenterDrp,
       dedicatedCloudDatacenterDashboardDeleteDrp,
       dedicatedServer,
