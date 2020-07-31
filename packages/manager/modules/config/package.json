@@ -13,25 +13,8 @@
     "directory": "packages/manager/modules/config"
   },
   "license": "BSD-3-Clause",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "browser": "./dist/umd/config.js",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "rollup -c --environment BUILD:production",
-    "dev": "rollup -c --environment BUILD:development",
-    "dev:watch": "yarn run dev --watch",
-    "prepare": "yarn run build",
-    "start": "lerna exec --stream --scope='@ovh-ux/manager-config' --include-dependencies -- yarn run build",
-    "start:dev": "lerna exec --stream --scope='@ovh-ux/manager-config' --include-dependencies -- yarn run dev",
-    "start:watch": "lerna exec --stream --parallel --scope='@ovh-ux/manager-config' --include-dependencies -- yarn run dev:watch"
-  },
+  "main": "./src/index.js",
   "dependencies": {
     "whatwg-fetch": "^3.0.0"
-  },
-  "devDependencies": {
-    "@ovh-ux/component-rollup-config": "^7.0.0"
   }
 }
