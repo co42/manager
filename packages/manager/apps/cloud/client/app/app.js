@@ -40,6 +40,7 @@ import ovhManagerServerSidebar from '@ovh-ux/manager-server-sidebar';
 import cloudUniverseComponents from '../cloudUniverseComponents';
 
 import errorPage from './error/error.module';
+import metrics from './dbaas/dbaas-metrics';
 
 Environment.setRegion(__WEBPACK_REGION__);
 
@@ -109,6 +110,7 @@ angular
       ovhManagerNavbar,
       ovhManagerServerSidebar,
       errorPage,
+      metrics,
       __NG_APP_INJECTIONS__,
     ].filter(isString),
   )
