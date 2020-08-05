@@ -17,12 +17,18 @@ export default /* @ngInject */ ($stateProvider) => {
         ),
       frameworks: /* @ngInject */ (
         OvhManagerPciServingNamespaceModelsAddServiceCapabilities,
+        projectId,
       ) =>
-        OvhManagerPciServingNamespaceModelsAddServiceCapabilities.getFrameworks(),
+        OvhManagerPciServingNamespaceModelsAddServiceCapabilities.getFrameworks(
+          projectId,
+        ),
       backends: /* @ngInject */ (
         OvhManagerPciServingNamespaceModelsAddServiceCapabilities,
+        projectId,
       ) =>
-        OvhManagerPciServingNamespaceModelsAddServiceCapabilities.getBackends(),
+        OvhManagerPciServingNamespaceModelsAddServiceCapabilities.getBackends(
+          projectId,
+        ),
       pricesCatalog: /* @ngInject */ (
         OvhManagerPciServingNamespaceModelsAddServiceCapabilities,
         projectId,

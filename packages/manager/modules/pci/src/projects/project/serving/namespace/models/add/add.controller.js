@@ -51,6 +51,9 @@ export default class PciServingNamespaceModelsAddController {
     this.advancedConfigurationAutoscalerSpec = false;
 
     [this.model.flavor] = this.flavors;
+    this.frameworks = this.frameworks.filter(
+      (framework) => framework.id !== 'flow',
+    );
     [this.model.framework] = this.frameworks;
     this.onChangeFramework(this.model.framework);
     this.backendVisible = false;

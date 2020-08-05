@@ -29,19 +29,23 @@ export default class OvhManagerPciServingNamespaceModelsAddServiceCapabilities {
     return this.CucPriceHelper.getPrices(projectId);
   }
 
-  getFrameworks() {
+  getFrameworks(serviceName) {
     return this.OvhApiCloudProjectAi.Capabilities()
       .Serving()
       .Framework()
       .v6()
-      .query().$promise;
+      .query({
+        serviceName,
+      }).$promise;
   }
 
-  getBackends() {
+  getBackends(serviceName) {
     return this.OvhApiCloudProjectAi.Capabilities()
       .Serving()
       .Backend()
       .v6()
-      .query().$promise;
+      .query({
+        serviceName,
+      }).$promise;
   }
 }
