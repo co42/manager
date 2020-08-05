@@ -7,7 +7,6 @@ import {
   EXTENSION,
   FOLDER_MODE,
   FILE_MODE,
-  COMPATIBILITY_GUIDE_URL,
 } from './add.constants';
 
 export default class PciServingNamespaceModelsAddController {
@@ -26,7 +25,6 @@ export default class PciServingNamespaceModelsAddController {
     this.BUILD_IMAGE = BUILD_IMAGE;
     this.FOLDER_MODE = FOLDER_MODE;
     this.FILE_MODE = FILE_MODE;
-    this.COMPATIBILITY_GUIDE_URL = COMPATIBILITY_GUIDE_URL;
   }
 
   $onInit() {
@@ -38,8 +36,10 @@ export default class PciServingNamespaceModelsAddController {
       id: null,
       storagePath: null,
       flavor: null,
+      framework: null,
+      backend: null,
       workflowTemplate: null,
-      imageId: null,
+      image: null, // Preset
       autoscalingSpec: {
         minReplicas: 1,
         maxReplicas: 3,
@@ -51,6 +51,9 @@ export default class PciServingNamespaceModelsAddController {
     this.advancedConfigurationAutoscalerSpec = false;
 
     [this.model.flavor] = this.flavors;
+    [this.model.framework] = this.frameworks;
+    this.onChangeFramework(this.model.framework);
+    this.backendVisible = false;
 
     this.workflowTemplates = [this.BUILD_IMAGE, this.PRESET_IMAGE];
 
@@ -108,17 +111,34 @@ export default class PciServingNamespaceModelsAddController {
     this.error = false;
     this.isAdding = true;
 
-    this.OvhManagerPciServingModelsService.add(
-      this.projectId,
-      this.namespaceId,
-      {
+    let modelCreation;
+    if (this.model.workflowTemplate === this.PRESET_IMAGE) {
+      // Preset image
+      modelCreation = {
         id: this.model.id,
         storagePath: this.model.storagePath,
         flavor: this.model.flavor.id,
         workflowTemplate: this.model.workflowTemplate,
-        imageId: get(this.model.imageId, 'id'),
+        imageId: this.model.image.id,
         autoscalingSpec: this.model.autoscalingSpec,
-      },
+      };
+    } else {
+      // Build image
+      modelCreation = {
+        id: this.model.id,
+        storagePath: this.model.storagePath,
+        flavor: this.model.flavor.id,
+        framework: this.model.framework.id,
+        backend: this.model.backend.id,
+        workflowTemplate: this.model.workflowTemplate,
+        autoscalingSpec: this.model.autoscalingSpec,
+      };
+    }
+
+    this.OvhManagerPciServingModelsService.add(
+      this.projectId,
+      this.namespaceId,
+      modelCreation,
     )
       .then(() =>
         this.goBack(
@@ -146,5 +166,21 @@ export default class PciServingNamespaceModelsAddController {
 
   getTax(id) {
     return this.pricesCatalog[`ai-serving-engine.${id}.hour.consumption`].tax;
+  }
+
+  onChangeFramework(framework) {
+    this.model.backend = this.backends.find(
+      (backend) => backend.id === framework.recommendedBackend,
+    );
+  }
+
+  getBackendLabel(backend, framework) {
+    let label = backend.name;
+    if (backend.id === framework.recommendedBackend) {
+      label += ` (${this.$translate.instant(
+        'pci_projects_project_serving_namespace_models_add_recommended',
+      )})`;
+    }
+    return label;
   }
 }

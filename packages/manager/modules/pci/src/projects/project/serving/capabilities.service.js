@@ -28,4 +28,20 @@ export default class OvhManagerPciServingNamespaceModelsAddServiceCapabilities {
   getPricesFromCatalog(projectId) {
     return this.CucPriceHelper.getPrices(projectId);
   }
+
+  getFrameworks() {
+    return this.OvhApiCloudProjectAi.Capabilities()
+      .Serving()
+      .Framework()
+      .v6()
+      .query().$promise;
+  }
+
+  getBackends() {
+    return this.OvhApiCloudProjectAi.Capabilities()
+      .Serving()
+      .Backend()
+      .v6()
+      .query().$promise;
+  }
 }
