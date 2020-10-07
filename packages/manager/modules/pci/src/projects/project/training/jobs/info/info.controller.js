@@ -42,7 +42,7 @@ export default class PciTrainingJobsInfoController {
   }
 
   getDuration() {
-    let duration = this.job.totalRuntime;
+    let { duration } = this.job.state;
     if (this.start) {
       duration += moment().diff(this.start) / 1000;
     }

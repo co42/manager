@@ -22,8 +22,7 @@ export default class PciTrainingJobsSubmitController {
         id: null,
       },
       command: null,
-      user: null,
-      data: [],
+      volumes: [],
       resources: {
         gpu: 1,
       },
@@ -31,42 +30,12 @@ export default class PciTrainingJobsSubmitController {
 
     this.gpus = [];
     this.selectedGpu = null;
-
-    // Load users
-    this.allUsersLoaded = false;
-    this.allUsers()
-      .then((users) => {
-        this.users = users.map((user) => {
-          return {
-            name: user.username,
-            description: `${user.username} (${user.description})`,
-          };
-        });
-      })
-      .finally(() => {
-        this.allUsersLoaded = true;
-        if (this.users.length === 1) {
-          // eslint-disable-next-line prefer-destructuring
-          this.job.user = this.users[0];
-        }
-      });
-
     this.showAdvancedImage = false;
   }
 
   setData() {
-    this.dataSource = this.data
-      .filter(
-        ({ region, user }) =>
-          region === this.job.region.name && user === this.job.user.name,
-      )
-      .map(({ name, id }) => {
-        return {
-          name: `${id}:/workspace/${name}`,
-          display: `${name} (/workspace/${name})`,
-        };
-      });
-    this.job.data = [];
+    this.dataSource = [];
+    this.job.volumes = [];
     this.emptyData = this.dataSource.length === 0;
   }
 
@@ -107,8 +76,7 @@ export default class PciTrainingJobsSubmitController {
     const payload = {
       image: this.job.image.id,
       region: this.job.region.name,
-      user: this.job.user.name,
-      data: this.job.data.map(({ name }) => name),
+      volumes: this.job.volumes,
       resources: {
         cpu: this.job.resources.cpu,
         gpu: this.job.resources.gpu,

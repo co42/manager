@@ -1,8 +1,6 @@
 {
   "pci_projects_project_training_jobs_list_message_1": "Para aceder a esta lista de tarefas através da linha de comandos, execute o seguinte comando:",
   "pci_projects_project_training_jobs_submit_select_region": "Escolher uma região",
-  "pci_projects_project_training_jobs_submit_select_user": "Escolher um utilizador",
-  "pci_projects_project_training_jobs_submit_select_user_tips": "Escolher o utilizador a quem pertence o job",
   "pci_projects_project_training_jobs_submit_select_image": "Introduzir a imagem Docker",
   "pci_projects_project_training_jobs_submit_select_image_tips": "Introduza o nome da imagem Docker do job",
   "pci_projects_project_training_jobs_submit_select_resources": "Escolher os recursos a atribuir",

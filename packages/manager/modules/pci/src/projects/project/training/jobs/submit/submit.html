@@ -18,26 +18,6 @@
             >
             </pci-project-regions-list>
         </oui-step-form>
-        <oui-step-form
-            data-header="{{:: 'pci_projects_project_training_jobs_submit_select_user' | translate  }}"
-            data-editable="$ctrl.allUsersLoaded && !$ctrl.isSubmit"
-            data-loading="!$ctrl.allUsersLoaded"
-        >
-            <oui-field
-                data-size="xl"
-                data-help-text="{{:: 'pci_projects_project_training_jobs_submit_select_user_tips' | translate  }}"
-            >
-                <oui-select
-                    id="user-select"
-                    name="user-select"
-                    data-model="$ctrl.job.user"
-                    data-items="$ctrl.users"
-                    data-match="description"
-                    data-required
-                >
-                </oui-select>
-            </oui-field>
-        </oui-step-form>
 
         <oui-step-form
             data-header="{{ :: 'pci_projects_project_training_jobs_submit_select_image' | translate }}"

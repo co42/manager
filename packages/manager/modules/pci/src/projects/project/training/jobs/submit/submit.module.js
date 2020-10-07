@@ -8,7 +8,6 @@ import 'ovh-api-services';
 
 import component from './submit.component';
 import routing from './submit.routing';
-import data from '../../data.service';
 
 const moduleName = 'ovhManagerPciTrainingJobsSubmit';
 
@@ -24,7 +23,6 @@ angular
   ])
   .config(routing)
   .component('pciProjectTrainingJobsSubmitComponent', component)
-  .service('PciProjectTrainingDataService', data)
   .run(/* @ngTranslationsInject:json ./translations */);
 
 export default moduleName;

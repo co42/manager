@@ -34,45 +34,6 @@
                         </oui-tile-description>
                     </dl>
                 </div>
-                <div class="oui-tile__item">
-                    <dl class="oui-tile__definition">
-                        <dt class="oui-tile__term">
-                            <span
-                                class="ellipsis"
-                                data-translate="pci_projects_project_training_dashboard_console_url"
-                            ></span>
-                            <button
-                                type="button"
-                                class="oui-popover-button ellipsis"
-                                data-oui-popover="{{:: 'pci_projects_project_training_dashboard_console_url_help' | translate}}"
-                            ></button>
-                            <img
-                                data-ng-src="{{:: $ctrl.illustration }}"
-                                alt
-                                class="w-25 float-right"
-                            />
-                        </dt>
-
-                        <oui-tile-description>
-                            <a
-                                class="oui-link oui-link_icon"
-                                href="{{:: $ctrl.currentRegion.consoleUrl }}"
-                                target="_blank"
-                                rel="noopener"
-                                >{{:: $ctrl.currentRegion.consoleUrl }}
-                                <span
-                                    class="oui-icon oui-icon-external_link"
-                                    aria-hidden="true"
-                                ></span>
-                                <span class="sr-only"
-                                    >{{::
-                                    'pci_projects_project_training_dashboard_console_url_help'
-                                    | translate}}</span
-                                >
-                            </a>
-                        </oui-tile-description>
-                    </dl>
-                </div>
                 <div
                     class="oui-tile__item"
                     data-ng-if="$ctrl.trainingFeatures.registry"

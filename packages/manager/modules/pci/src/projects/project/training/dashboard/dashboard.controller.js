@@ -1,7 +1,6 @@
 import flatten from 'lodash/flatten';
 import map from 'lodash/map';
 import filter from 'lodash/filter';
-import illustration from '../assets/partner.png';
 
 export default class PciTrainingDashboardController {
   /* @ngInject */
@@ -12,7 +11,6 @@ export default class PciTrainingDashboardController {
   }
 
   $onInit() {
-    this.illustration = illustration;
     [this.currentRegion] = this.regions;
 
     this.loadMessages();
@@ -25,7 +23,6 @@ export default class PciTrainingDashboardController {
       ),
     ).reduce((a, b) => a + b, 0);
 
-    this.eaiDocsUrl = '';
     this.runningJobs = this.getJobsWithSelector((job) => job.isRunning());
     this.nbRunning = this.runningJobs.length;
     this.nbSuccess = this.getJobsNumberWithSelector((job) => job.isSuccess());

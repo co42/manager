@@ -11,7 +11,6 @@ export default {
     trainingFeatures: '<',
     registry: '<',
     goToJobSubmit: '<',
-    goToDataCreate: '<',
     goToDashboard: '<',
     dashboardLink: '<',
     goToRegistryAttach: '<',

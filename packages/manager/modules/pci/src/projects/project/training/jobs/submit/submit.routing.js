@@ -10,8 +10,9 @@ export default /* @ngInject */ ($stateProvider) => {
       user: /* @ngInject */ (SessionService) => SessionService.getUser(),
       breadcrumb: /* @ngInject */ ($translate) =>
         $translate.instant('pci_projects_project_training_jobs_list_submit'),
-      data: /* @ngInject */ (PciProjectTrainingDataService, projectId) =>
-        PciProjectTrainingDataService.getAll(projectId),
+      data: /* @ngInject */ () => () => {
+        return [];
+      },
       presetImages: /* @ngInject */ (PciProjectTrainingService, projectId) =>
         PciProjectTrainingService.getPresetImages(projectId),
       gpus: /* @ngInject */ (PciProjectTrainingService, projectId) => (

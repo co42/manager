@@ -65,14 +65,6 @@ export default /* @ngInject */ ($stateProvider) => {
         $state.href('pci.projects.project.training.jobs.submit', {
           projectId,
         }),
-      goToDataCreate: /* @ngInject */ ($state, projectId) => () =>
-        $state.go('pci.projects.project.training.data.add', {
-          projectId,
-        }),
-      dataLink: /* @ngInject */ ($state, projectId) =>
-        $state.href('pci.projects.project.training.data', {
-          projectId,
-        }),
       installLink: /* @ngInject */ ($state, projectId) =>
         $state.href('pci.projects.project.training.dashboard.install', {
           projectId,

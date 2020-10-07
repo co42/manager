@@ -1,8 +1,6 @@
 {
   "pci_projects_project_training_jobs_list_message_1": "To access this list of jobs via the command line, run the following command:",
   "pci_projects_project_training_jobs_submit_select_region": "Choose a region",
-  "pci_projects_project_training_jobs_submit_select_user": "Choose a user",
-  "pci_projects_project_training_jobs_submit_select_user_tips": "Choose the user who will own the job",
   "pci_projects_project_training_jobs_submit_select_image": "Enter the Docker image",
   "pci_projects_project_training_jobs_submit_select_image_tips": "Enter the name of the Docker image for the job",
   "pci_projects_project_training_jobs_submit_select_resources": "Choose the resources to allocate",

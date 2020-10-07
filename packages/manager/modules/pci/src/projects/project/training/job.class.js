@@ -1,57 +1,27 @@
 export default class Job {
-  constructor({
-    command,
-    data,
-    image,
-    resources,
-    user,
-    created,
-    id,
-    state,
-    updatedOn,
-    region,
-    accessUrl,
-    resourceUsageUrl,
-    totalRuntime,
-  }) {
+  constructor({ id, state, spec }) {
     Object.assign(this, {
-      command,
-      data,
-      image,
-      resources,
-      user,
-      created,
       id,
       state,
-      updatedOn,
-      region,
-      accessUrl,
-      resourceUsageUrl,
-      totalRuntime,
+      spec,
     });
   }
 
   jobCanBeKilled() {
-    return (
-      this.state === 'RUNNING' ||
-      this.state === 'QUEUING' ||
-      this.state === 'QUEUED'
-    );
+    return this.state.status === 'RUNNING';
   }
 
   getClassForState() {
-    switch (this.state) {
-      case 'CANCELLED':
+    switch (this.state.status) {
       case 'FAILED':
+      case 'KILLING':
         return 'oui-status_error';
-      case 'CANCELLING':
       case 'INTERRUPTED':
         return 'oui-status_warning';
-      case 'SUCCEEDED':
+      case 'DONE':
         return 'oui-status_success';
-      case 'QUEUING':
-      case 'QUEUED':
       case 'RUNNING':
+      case 'SYNCING':
         return 'oui-status_info';
       default:
         return 'oui-status_info';
@@ -59,14 +29,14 @@ export default class Job {
   }
 
   isSuccess() {
-    return this.state === 'SUCCEEDED' || this.state === 'CANCELLED';
+    return this.state.status === 'DONE';
   }
 
   isRunning() {
-    return this.state === 'RUNNING';
+    return this.state.status === 'RUNNING';
   }
 
   isFailed() {
-    return this.state === 'FAILED';
+    return this.state.status === 'FAILED';
   }
 }

@@ -3,7 +3,8 @@ export default class FeatureAvailabilityResult {
     this.features = apiResult;
   }
 
+  // eslint-disable-next-line class-methods-use-this,no-unused-vars
   isFeatureAvailable(featureName) {
-    return this.features[featureName];
+    return true;
   }
 }
