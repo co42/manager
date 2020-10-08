@@ -20,7 +20,7 @@ export default class PciTrainingJobsInfoController {
 
     this.unitPrice = this.getPrice(1);
     this.unitTax = this.getTax(1);
-    const totalHour = this.job.totalRuntime / 3600;
+    const totalHour = this.job.status.duration / 3600;
     this.price = this.unitPrice * totalHour;
     this.tax = this.unitTax * totalHour;
 
