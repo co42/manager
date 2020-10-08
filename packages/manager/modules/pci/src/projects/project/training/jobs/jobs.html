@@ -58,7 +58,7 @@
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_projects_project_training_jobs_price' | translate"
-            data-property="totalRuntime"
+            data-property="status"
             data-type="string"
             data-sortable
         >
@@ -70,7 +70,7 @@
                     ~
                 </span>
                 <ovh-manager-catalog-price
-                    data-price="$ctrl.getPrice($row.totalRuntime / 3600)"
+                    data-price="$ctrl.getPrice($row.status.duration / 3600)"
                     data-user="$ctrl.user"
                     data-perform-rounding="false"
                     data-maximum-fraction-digits="2"
@@ -94,13 +94,13 @@
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_projects_project_training_jobs_created' | translate"
-            data-property="spec"
+            data-property="createdAt"
             data-type="date"
             data-searchable
             data-filterable
             data-sortable
         >
-            <span data-ng-bind="$value.createdAt | date:'medium'"></span>
+            <span data-ng-bind="$value | date:'medium'"></span>
         </oui-datagrid-column>
         <oui-action-menu data-align="end" data-compact>
             <oui-action-menu-item data-on-click="$ctrl.jobInfo($row.id)">
