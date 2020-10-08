@@ -8,11 +8,11 @@ export default class Job {
   }
 
   jobCanBeKilled() {
-    return this.state.status === 'RUNNING';
+    return this.status.state === 'RUNNING';
   }
 
   getClassForState() {
-    switch (this.state.status) {
+    switch (this.status.state) {
       case 'FAILED':
       case 'KILLING':
         return 'oui-status_error';
@@ -29,14 +29,14 @@ export default class Job {
   }
 
   isSuccess() {
-    return this.state.status === 'DONE';
+    return this.status.state === 'DONE';
   }
 
   isRunning() {
-    return this.state.status === 'RUNNING';
+    return this.status.state === 'RUNNING';
   }
 
   isFailed() {
-    return this.state.status === 'FAILED';
+    return this.status.state === 'FAILED';
   }
 }

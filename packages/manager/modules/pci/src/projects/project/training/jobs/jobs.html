@@ -56,7 +56,7 @@
                 data-oui-tooltip-placement="top"
                 data-oui-tooltip="{{:: 'pci_projects_project_training_jobs_price_estimate' | translate }}"
             >
-                <span data-ng-if="$row.state.duration">
+                <span data-ng-if="$row.status.duration">
                     ~
                 </span>
                 <ovh-manager-catalog-price
@@ -70,7 +70,7 @@
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_projects_project_training_jobs_state' | translate"
-            data-property="state"
+            data-property="status"
             data-type="string"
             data-searchable
             data-filterable
@@ -78,7 +78,7 @@
         >
             <span class="oui-status" data-ng-class="$row.getClassForState()">
                 <span
-                    data-translate="{{:: 'pci_projects_project_training_jobs_state_' + $value.state.status }}"
+                    data-translate="{{:: 'pci_projects_project_training_jobs_state_' + $value.state }}"
                 ></span>
             </span>
         </oui-datagrid-column>
