@@ -1,9 +1,12 @@
 export default class Job {
-  constructor({ id, status, spec }) {
+  constructor({ id, status, spec, createdAt, updatedAt, user }) {
     Object.assign(this, {
       id,
       status,
       spec,
+      createdAt,
+      updatedAt,
+      user,
     });
   }
 
