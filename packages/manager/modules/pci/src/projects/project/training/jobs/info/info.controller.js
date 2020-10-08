@@ -26,10 +26,10 @@ export default class PciTrainingJobsInfoController {
 
     this.loadMessages();
 
-    if (this.job.state === 'RUNNING') {
+    if (this.job.status.state === 'RUNNING') {
       this.start = moment();
       this.interval = this.$interval(() => {
-        let totalHourRecalculated = this.job.totalRuntime / 3600;
+        let totalHourRecalculated = this.job.status.duration / 3600;
 
         if (this.start) {
           totalHourRecalculated += moment().diff(this.start) / (1000 * 3600);
@@ -42,7 +42,7 @@ export default class PciTrainingJobsInfoController {
   }
 
   getDuration() {
-    let { duration } = this.job.state;
+    let { duration } = this.job.status;
     if (this.start) {
       duration += moment().diff(this.start) / 1000;
     }

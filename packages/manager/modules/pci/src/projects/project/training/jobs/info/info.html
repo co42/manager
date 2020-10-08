@@ -107,7 +107,7 @@
                     </oui-tile-description>
                 </oui-tile-definition>
 
-                <div class="oui-tile__item" ng-if="$ctrl.job.state.jobUrl">
+                <div class="oui-tile__item" ng-if="$ctrl.job.status.jobUrl">
                     <dl class="oui-tile__definition">
                         <dt class="oui-tile__term">
                             <span
@@ -123,7 +123,7 @@
                         <oui-tile-description>
                             <a
                                 class="oui-link oui-link_icon"
-                                href="{{:: $ctrl.job.state.jobUrl }}"
+                                href="{{:: $ctrl.job.status.jobUrl }}"
                                 target="_blank"
                                 rel="noopener"
                             >
@@ -173,7 +173,7 @@
                     data-term="{{:: 'pci_projects_project_training_jobs_price' | translate  }}"
                 >
                     <oui-tile-description>
-                        <span data-ng-if="$ctrl.job.state.duration">
+                        <span data-ng-if="$ctrl.job.status.duration">
                             ~
                         </span>
                         <ovh-manager-catalog-price
@@ -188,14 +188,14 @@
                 </oui-tile-definition>
                 <oui-tile-definition
                     data-term="{{:: 'pci_projects_project_training_jobs_resource_usage_url' | translate  }}"
-                    data-ng-if=":: $ctrl.job.monitoringUrl"
+                    data-ng-if=":: $ctrl.job.status.monitoringUrl"
                 >
                     <oui-tile-description>
                         <a
                             target="_blank"
                             class="oui-button oui-button_ghost"
                             rel="noopener"
-                            data-ng-href="{{:: $ctrl.job.monitoringUrl }}"
+                            data-ng-href="{{:: $ctrl.jobstatus..monitoringUrl }}"
                         >
                             <span
                                 data-translate="pci_projects_project_training_jobs_resource_usage_url_link"
@@ -230,7 +230,7 @@
             <oui-tile
                 class="h-100"
                 data-heading="{{:: 'pci_projects_project_training_jobs_info_title_4' | translate  }}"
-                data-ng-if="$ctrl.job.data.length > 0"
+                data-ng-if="$ctrl.job.volumes.length > 0"
             >
                 <oui-tile-definition
                     data-term="{{:: 'pci_projects_project_training_jobs_data' | translate  }}"
@@ -238,7 +238,7 @@
                     <oui-tile-description>
                         <ul>
                             <li
-                                ng-repeat="data in $ctrl.job.data"
+                                ng-repeat="data in $ctrl.job.volumes"
                                 class="api-list-item"
                             >
                                 {{ data }}

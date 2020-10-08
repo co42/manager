@@ -1,8 +1,8 @@
 export default class Job {
-  constructor({ id, state, spec }) {
+  constructor({ id, status, spec }) {
     Object.assign(this, {
       id,
-      state,
+      status,
       spec,
     });
   }
