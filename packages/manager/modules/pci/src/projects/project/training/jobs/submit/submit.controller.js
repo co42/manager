@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import remove from 'lodash/remove';
 
 export default class PciTrainingJobsSubmitController {
   /* @ngInject */
@@ -6,15 +7,18 @@ export default class PciTrainingJobsSubmitController {
     $translate,
     PciProjectTrainingService,
     PciProjectTrainingJobService,
+    PciProjectStorageContainersService,
     atInternet,
   ) {
     this.$translate = $translate;
     this.PciProjectTrainingService = PciProjectTrainingService;
     this.PciProjectTrainingJobService = PciProjectTrainingJobService;
+    this.PciProjectStorageContainersService = PciProjectStorageContainersService;
     this.atInternet = atInternet;
   }
 
   $onInit() {
+    this.volumesPermissions = ['RO', 'RW'];
     // Form payload
     this.job = {
       region: null,
@@ -31,12 +35,48 @@ export default class PciTrainingJobsSubmitController {
     this.gpus = [];
     this.selectedGpu = null;
     this.showAdvancedImage = false;
+    this.emptyData = this.containers.length === 0;
+    this.filterContainers();
   }
 
-  setData() {
-    this.dataSource = [];
-    this.job.volumes = [];
-    this.emptyData = this.dataSource.length === 0;
+  filterContainers() {
+    this.filteredContainers = this.containers
+      .filter(({ archive }) => !archive)
+      // Remove containers that are already on volume list
+      .filter(({ name, region }) => {
+        return !this.job.volumes
+          // eslint-disable-next-line no-shadow
+          .map(({ container, region }) => `${container}-${region}`)
+          .includes(`${name}-${region}`);
+      })
+      .map(({ name, region }) => {
+        return {
+          name,
+          region,
+          description: `${name} - ${region}`,
+        };
+      });
+  }
+
+  onAddVolume(form) {
+    const volume = {
+      region: form.container.$viewValue.region,
+      container: form.container.$viewValue.name,
+      mountPath: form.mountPath.$viewValue,
+      permission: form.permission.$viewValue,
+    };
+
+    this.job.volumes.push(volume);
+    this.filterContainers();
+  }
+
+  onRemoveVolume(form) {
+    const container = form.container.$viewValue;
+    remove(
+      this.job.volumes,
+      (vol) =>
+        vol.region === container.region && vol.container === container.name,
+    );
   }
 
   cliCommand() {
@@ -46,9 +86,12 @@ export default class PciTrainingJobsSubmitController {
       `--gpu ${this.job.resources.gpu}`,
     ];
 
-    if (this.job.data && this.job.data.length > 0) {
-      this.job.data
-        .map(({ name }) => `--data ${name}`)
+    if (this.job.volumes && this.job.volumes.length > 0) {
+      this.job.volumes
+        .map(
+          ({ name, region, mountPath, permission }) =>
+            `--volume ${name}@${region}:${mountPath}:${permission}`,
+        )
         .forEach((x) => baseCmdArray.push(x));
     }
 

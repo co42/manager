@@ -28,9 +28,5 @@
   "pci_projects_project_training_jobs_submit_select_command_tile_title": "Encomenda específica",
   "pci_projects_project_training_jobs_submit_select_command_tile_command": "Argumentos",
   "pci_projects_project_training_jobs_access_url_help": "O acesso HTTP permite que o seu browser seja reencaminhado para a porta 80 do container se este ainda estiver a ser executado. Para aceder à interface web, terá de se identificar enquanto utilizador proprietário do job: {{ owner }}.",
-  "pci_projects_project_training_jobs_submit_select_image_tips_help": "As imagens alojadas num registry privado ou público são aceites (Github, GitLab, DockerHub, ...)",
-  "pci_projects_project_training_jobs_submit_attach_source_heading": "Volumes disponíveis",
-  "pci_projects_project_training_jobs_submit_attach_target_heading": "Volumes selecionados",
-  "pci_projects_project_training_jobs_submit_attach_source_placeholder": "Nenhum volume disponível",
-  "pci_projects_project_training_jobs_submit_attach_target_placeholder": "Nenhum volume selecionado"
+  "pci_projects_project_training_jobs_submit_select_image_tips_help": "As imagens alojadas num registry privado ou público são aceites (Github, GitLab, DockerHub, ...)"
 }

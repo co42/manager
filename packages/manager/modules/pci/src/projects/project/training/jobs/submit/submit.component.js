@@ -13,7 +13,7 @@ export default {
     getTax: '<',
     allUsers: '<',
     regions: '<',
-    data: '<',
+    containers: '<',
     goToData: '<',
   },
 };
