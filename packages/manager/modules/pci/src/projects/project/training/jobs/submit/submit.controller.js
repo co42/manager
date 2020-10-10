@@ -89,8 +89,8 @@ export default class PciTrainingJobsSubmitController {
     if (this.job.volumes && this.job.volumes.length > 0) {
       this.job.volumes
         .map(
-          ({ name, region, mountPath, permission }) =>
-            `--volume ${name}@${region}:${mountPath}:${permission}`,
+          ({ container, region, mountPath, permission }) =>
+            `--volume ${container}@${region}:${mountPath}:${permission}`,
         )
         .forEach((x) => baseCmdArray.push(x));
     }
