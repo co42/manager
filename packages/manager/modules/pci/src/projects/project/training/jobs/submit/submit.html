@@ -97,8 +97,9 @@
         <oui-step-form
             data-header="{{:: 'pci_projects_project_training_jobs_submit_select_data' | translate  }}"
             data-editable="!$ctrl.isSubmit"
+            data-on-submit="$ctrl.forceSubmitContainer(form)"
         >
-            <div data-ng-if="$ctrl.data.length">
+            <div data-ng-if="!$ctrl.containers.length">
                 <div
                     class="text-danger"
                     data-translate="pci_projects_project_training_jobs_submit_select_no_data"
@@ -113,8 +114,8 @@
                     ></span>
                 </button>
             </div>
-
             <oui-inline-adder
+                data-ng-if="$ctrl.containers.length"
                 data-on-add="$ctrl.onAddVolume(form)"
                 data-on-remove="$ctrl.onRemoveVolume(form)"
             >

@@ -59,6 +59,7 @@ export default class PciTrainingJobsSubmitController {
   }
 
   onAddVolume(form) {
+    console.log(this.test);
     const volume = {
       region: form.container.$viewValue.region,
       container: form.container.$viewValue.name,
@@ -68,6 +69,20 @@ export default class PciTrainingJobsSubmitController {
 
     this.job.volumes.push(volume);
     this.filterContainers();
+  }
+
+  // Dirty hack to validate the oui-inline-adder form
+  // eslint-disable-next-line class-methods-use-this
+  forceSubmitContainer(form) {
+    form.$$controls.forEach((innerForm) => {
+      // eslint-disable-next-line no-param-reassign
+      innerForm.$error = {};
+      innerForm.$setPristine();
+    });
+    // eslint-disable-next-line no-param-reassign
+    form.$valid = true;
+
+    return true;
   }
 
   onRemoveVolume(form) {
@@ -80,11 +95,7 @@ export default class PciTrainingJobsSubmitController {
   }
 
   cliCommand() {
-    const baseCmdArray = [
-      'job submit',
-      `--image ${this.job.image.id}`,
-      `--gpu ${this.job.resources.gpu}`,
-    ];
+    const baseCmdArray = ['job submit', `--gpu ${this.job.resources.gpu}`];
 
     if (this.job.volumes && this.job.volumes.length > 0) {
       this.job.volumes
@@ -94,6 +105,8 @@ export default class PciTrainingJobsSubmitController {
         )
         .forEach((x) => baseCmdArray.push(x));
     }
+
+    baseCmdArray.push(`--image ${this.job.image.id}`);
 
     if (this.job.command) {
       baseCmdArray.push('--');
