@@ -241,7 +241,8 @@
                                 ng-repeat="data in $ctrl.job.volumes"
                                 class="api-list-item"
                             >
-                                {{ data }}
+                                {{ data.container }}@{{
+                                data.region}}:{{data.mountPath}}:{{data.permission}}
                             </li>
                         </ul>
                     </oui-tile-description>
