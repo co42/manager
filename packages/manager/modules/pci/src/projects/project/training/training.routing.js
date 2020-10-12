@@ -116,8 +116,16 @@ export default /* @ngInject */ ($stateProvider) => {
         $state.href('pci.projects.project.training.dashboard.detach-registry', {
           projectId,
         }),
-      jobList: /* @ngInject */ (PciProjectTrainingJobService, projectId) =>
-        PciProjectTrainingJobService.getAll(projectId),
+      jobList: /* @ngInject */ (
+        PciProjectTrainingJobService,
+        projectId,
+        isAuthorized,
+      ) => {
+        if (!isAuthorized) {
+          return [];
+        }
+        return PciProjectTrainingJobService.getAll(projectId);
+      },
       currentActiveLink: /* @ngInject */ ($transition$, $state) => () =>
         $state.href($state.current.name, $transition$.params()),
       allUsers: /* @ngInject */ (PciProjectTrainingService, projectId) => () =>
