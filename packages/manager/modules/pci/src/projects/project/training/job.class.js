@@ -17,7 +17,7 @@ export default class Job {
   getClassForState() {
     switch (this.status.state) {
       case 'FAILED':
-      case 'KILLING':
+      case 'ERROR':
         return 'oui-status_error';
       case 'INTERRUPTED':
         return 'oui-status_warning';
@@ -25,6 +25,8 @@ export default class Job {
         return 'oui-status_success';
       case 'RUNNING':
       case 'SYNCING':
+      case 'QUEUED':
+      case 'PENDING':
         return 'oui-status_info';
       default:
         return 'oui-status_info';
