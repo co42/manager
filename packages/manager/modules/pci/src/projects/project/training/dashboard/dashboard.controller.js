@@ -11,8 +11,6 @@ export default class PciTrainingDashboardController {
   }
 
   $onInit() {
-    [this.currentRegion] = this.regions;
-
     this.loadMessages();
     this.resourceUsage = flatten(
       map(
@@ -39,10 +37,6 @@ export default class PciTrainingDashboardController {
       .finally(() => {
         this.allUsersLoaded = true;
       });
-  }
-
-  changeRegion(region) {
-    this.currentRegion = region;
   }
 
   getAllUsersAsStrings() {
@@ -83,25 +77,5 @@ export default class PciTrainingDashboardController {
     });
 
     return this.goToJobSubmit();
-  }
-
-  attachRegistry() {
-    this.atInternet.trackClick({
-      name:
-        'public-cloud::pci::projects::project::training::dashboard::attach-registry::confirm',
-      type: 'action',
-    });
-
-    return this.goToRegistryAttach();
-  }
-
-  goToRegistryDetachTracking() {
-    this.atInternet.trackClick({
-      name:
-        'public-cloud::pci::projects::project::training::dashboard::detach-registry::confirm',
-      type: 'action',
-    });
-
-    return this.goToRegistryDetach();
   }
 }

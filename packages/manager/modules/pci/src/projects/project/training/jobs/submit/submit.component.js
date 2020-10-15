@@ -11,7 +11,6 @@ export default {
     presetImages: '<',
     getPrice: '<',
     getTax: '<',
-    allUsers: '<',
     regions: '<',
     containers: '<',
     goToData: '<',

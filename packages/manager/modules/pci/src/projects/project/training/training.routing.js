@@ -38,6 +38,10 @@ export default /* @ngInject */ ($stateProvider) => {
         $state.href('pci.projects.project.training.jobs', {
           projectId,
         }),
+      registriesLink: /* @ngInject */ ($state, projectId) =>
+        $state.href('pci.projects.project.training.registries', {
+          projectId,
+        }),
       jobInfo: /* @ngInject */ ($state, projectId) => (jobId) =>
         $state.go('pci.projects.project.training.jobs.info', {
           projectId,
@@ -63,10 +67,6 @@ export default /* @ngInject */ ($stateProvider) => {
         }),
       submitJobLink: /* @ngInject */ ($state, projectId) =>
         $state.href('pci.projects.project.training.jobs.submit', {
-          projectId,
-        }),
-      installLink: /* @ngInject */ ($state, projectId) =>
-        $state.href('pci.projects.project.training.dashboard.install', {
           projectId,
         }),
       dashboardLink: /* @ngInject */ ($state, projectId) =>
@@ -100,22 +100,6 @@ export default /* @ngInject */ ($stateProvider) => {
 
         return promise;
       },
-      goToRegistryAttach: /* @ngInject */ ($state, projectId) => () =>
-        $state.go('pci.projects.project.training.dashboard.attach-registry', {
-          projectId,
-        }),
-      registryAttachLink: /* @ngInject */ ($state, projectId) =>
-        $state.href('pci.projects.project.training.dashboard.attach-registry', {
-          projectId,
-        }),
-      goToRegistryDetach: /* @ngInject */ ($state, projectId) => () =>
-        $state.go('pci.projects.project.training.dashboard.detach-registry', {
-          projectId,
-        }),
-      registryDetachLink: /* @ngInject */ ($state, projectId) =>
-        $state.href('pci.projects.project.training.dashboard.detach-registry', {
-          projectId,
-        }),
       jobList: /* @ngInject */ (
         PciProjectTrainingJobService,
         projectId,
