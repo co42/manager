@@ -18,7 +18,6 @@
   "pci_projects_project_training_jobs_state_KILLING": "Anulowanie",
   "pci_projects_project_training_jobs_state_FAILED": "Błąd",
   "pci_projects_project_training_jobs_state_INTERRUPTED": "Przerwano",
-  "pci_projects_project_training_jobs_state_SUCCEEDED": "Zakończone",
   "pci_projects_project_training_jobs_state_RUNNING": "W realizacji",
   "pci_projects_project_training_jobs_state_OTHER": "Inne",
   "pci_projects_project_training_jobs_info": "Szczegóły",

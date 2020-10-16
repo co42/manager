@@ -1,10 +1,10 @@
 {
   "pci_projects_project_training_registry_section_1_title": "Registry Partagé",
-  "pci_projects_project_training_registry_section_1_title_info_1": "Nous stockons par défaut les images privées de vos jobs dans un registre Docker géré par OVHcloud et mutualisé entre nos clients. Sur ce registre partagé, nous nous réservons le droit de supprimer vos images à tout moment. Il est conseillé d'utiliser votre les registre privés pour stocker vos images privées.",
+  "pci_projects_project_training_registry_section_1_title_info_1": "Nous stockons par défaut les images privées de vos jobs dans un registre Docker géré par OVHcloud et mutualisé entre nos clients. Sur ce registre partagé, nous nous réservons le droit de supprimer vos images à tout moment. Il est conseillé d'utiliser votre registre privés pour stocker vos images privées.",
   "pci_projects_project_training_registry_section_1_message_1": "Vous pouvez vous connecter au docker registry partagé avec la commande suivante:",
   "pci_projects_project_training_registry_section_1_message_2": "L'authentification sur la plateforme peut se faire à partir de tous les ",
   "pci_projects_project_training_registry_section_1_message_3": "utilisateurs configurés",
   "pci_projects_project_training_registry_section_1_message_4": " au sein du même projet public cloud.",
-  "pci_projects_project_training_registry_section_1_message_5": "Vous pouvez ensuite taggé vos images et les uploader sur le registry.",
+  "pci_projects_project_training_registry_section_1_message_5": "Vous pouvez ensuite tagger vos images et les uploader sur le registry.",
   "pci_projects_project_training_registry_section_1_message_6": "Votre image est maintenant utilisable dans un job AI training."
 }
