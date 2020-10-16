@@ -1,3 +1,5 @@
+import includes from 'lodash/includes';
+
 export default class Job {
   constructor({ id, status, spec, createdAt, updatedAt, user }) {
     Object.assign(this, {
@@ -11,7 +13,10 @@ export default class Job {
   }
 
   jobCanBeKilled() {
-    return this.status.state === 'RUNNING';
+    return includes(
+      ['RUNNING', 'SYNCING', 'QUEUED', 'PENDING'],
+      this.status.state,
+    );
   }
 
   getClassForState() {
@@ -22,12 +27,12 @@ export default class Job {
       case 'INTERRUPTED':
         return 'oui-status_warning';
       case 'DONE':
-        return 'oui-status_success';
+        return 'oui-status_info';
       case 'RUNNING':
       case 'SYNCING':
       case 'QUEUED':
       case 'PENDING':
-        return 'oui-status_info';
+        return 'oui-status_success';
       default:
         return 'oui-status_info';
     }
