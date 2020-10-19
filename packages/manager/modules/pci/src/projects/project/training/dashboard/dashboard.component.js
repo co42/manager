@@ -6,6 +6,7 @@ export default {
   controller,
   template,
   bindings: {
+    projectId: '<',
     usage: '<',
     currencySymbol: '<',
     trainingFeatures: '<',

@@ -16,7 +16,10 @@
         translate }}
     </p>
     <p>
-        <code>docker login {{ $ctrl.currentRegion.registryUrl }}</code>
+        <code
+            >docker login {{ $ctrl.currentRegion.registryUrl }}/{{
+            $ctrl.projectId }}</code
+        >
     </p>
     <p>
         {{:: 'pci_projects_project_training_registry_section_1_message_2' |
@@ -34,12 +37,15 @@
     </p>
     <p>
         <code
-            >docker tag example/image {{ $ctrl.currentRegion.registryUrl
-            }}/example</code
+            >docker tag example/image {{ $ctrl.currentRegion.registryUrl }}/{{
+            $ctrl.projectId }}/example</code
         >
     </p>
     <p>
-        <code>docker push {{ $ctrl.currentRegion.registryUrl }}/example</code>
+        <code
+            >docker push {{ $ctrl.currentRegion.registryUrl }}/{{
+            $ctrl.projectId }}/example</code
+        >
     </p>
     <p>
         {{:: 'pci_projects_project_training_registry_section_1_message_6' |
