@@ -15,15 +15,15 @@
         data-row-loader="$row"
     >
         <oui-datagrid-column
-            data-title=":: 'pci_projects_project_training_jobs_id' | translate"
-            data-property="id"
+            data-title=":: 'pci_projects_project_training_jobs_name' | translate"
+            data-property="spec"
             data-type="string"
             data-searchable
             data-filterable
             data-sortable
         >
-            <a href="{{:: $ctrl.jobInfoLink($value) }}">
-                <span data-ng-bind="::$value"></span>
+            <a href="{{:: $ctrl.jobInfoLink($row.id) }}">
+                <span data-ng-bind="::$value.name"></span>
             </a>
         </oui-datagrid-column>
         <oui-datagrid-column
@@ -34,7 +34,7 @@
             data-filterable
             data-sortable
         >
-            <span data-ng-bind="$value.region"></span>
+            <span data-ng-bind="::$value.region"></span>
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_projects_project_training_jobs_image' | translate"
@@ -44,7 +44,7 @@
             data-filterable
             data-sortable
         >
-            <span data-ng-bind="$value.image"></span>
+            <span data-ng-bind="::$value.image"></span>
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_projects_project_training_jobs_creator' | translate"
@@ -54,7 +54,7 @@
             data-filterable
             data-sortable
         >
-            <span data-ng-bind="$value"></span>
+            <span data-ng-bind="::$value"></span>
         </oui-datagrid-column>
         <oui-datagrid-column
             data-title=":: 'pci_projects_project_training_jobs_price' | translate"
@@ -100,7 +100,7 @@
             data-filterable
             data-sortable
         >
-            <span data-ng-bind="$value | date:'medium'"></span>
+            <span data-ng-bind="::$value | date:'medium'"></span>
         </oui-datagrid-column>
         <oui-action-menu data-align="end" data-compact>
             <oui-action-menu-item data-on-click="$ctrl.jobInfo($row.id)">

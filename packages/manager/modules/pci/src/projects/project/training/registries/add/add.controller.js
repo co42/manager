@@ -2,8 +2,9 @@ import get from 'lodash/get';
 
 export default class PciServingTrainingRegistriesAddRegistryController {
   /* @ngInject */
-  constructor($translate) {
+  constructor($translate, atInternet) {
     this.$translate = $translate;
+    this.atInternet = atInternet;
   }
 
   $onInit() {
@@ -17,6 +18,12 @@ export default class PciServingTrainingRegistriesAddRegistryController {
   }
 
   addRegistry() {
+    this.atInternet.trackClick({
+      name:
+        'public-cloud::pci::projects::project::training::registries::add::confirm',
+      type: 'action',
+    });
+
     this.loading = true;
 
     this.saveRegistry({

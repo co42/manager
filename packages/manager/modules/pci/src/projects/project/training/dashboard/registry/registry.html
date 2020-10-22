@@ -15,12 +15,9 @@
         {{:: 'pci_projects_project_training_registry_section_1_message_1' |
         translate }}
     </p>
-    <p>
-        <code
-            >docker login {{ $ctrl.currentRegion.registryUrl }}/{{
-            $ctrl.projectId }}</code
-        >
-    </p>
+
+    <pre><code>docker login {{ $ctrl.currentRegion.registryUrl }}/{{$ctrl.projectId }}</code></pre>
+
     <p>
         {{:: 'pci_projects_project_training_registry_section_1_message_2' |
         translate }}
@@ -35,18 +32,9 @@
         {{:: 'pci_projects_project_training_registry_section_1_message_5' |
         translate }}
     </p>
-    <p>
-        <code
-            >docker tag example/image {{ $ctrl.currentRegion.registryUrl }}/{{
-            $ctrl.projectId }}/example</code
-        >
-    </p>
-    <p>
-        <code
-            >docker push {{ $ctrl.currentRegion.registryUrl }}/{{
-            $ctrl.projectId }}/example</code
-        >
-    </p>
+    <pre><code>docker tag image {{ $ctrl.currentRegion.registryUrl }}/{{$ctrl.projectId }}/image
+
+docker push {{ $ctrl.currentRegion.registryUrl }}/{{$ctrl.projectId }}/image</code></pre>
     <p>
         {{:: 'pci_projects_project_training_registry_section_1_message_6' |
         translate }}

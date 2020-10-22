@@ -36,10 +36,10 @@
                 data-heading="{{:: 'pci_projects_project_training_jobs_info_title_1' | translate  }}"
             >
                 <oui-tile-definition
-                    data-term="{{:: 'pci_projects_project_training_jobs_id' | translate  }}"
+                    data-term="{{:: 'pci_projects_project_training_jobs_name' | translate  }}"
                 >
                     <oui-tile-description
-                        data-ng-bind="$ctrl.job.id"
+                        data-ng-bind="$ctrl.job.spec.name"
                     ></oui-tile-description>
                 </oui-tile-definition>
                 <oui-tile-definition

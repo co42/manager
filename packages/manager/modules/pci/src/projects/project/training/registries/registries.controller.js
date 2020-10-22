@@ -10,20 +10,10 @@ export default class PciTrainingRegistryController {
     this.loadMessages();
   }
 
-  addRegistry() {
-    this.atInternet.trackClick({
-      name:
-        'public-cloud::pci::projects::project::training::dashboard::attach-registry::confirm',
-      type: 'action',
-    });
-
-    return this.goToRegistryAdd();
-  }
-
   deleteRegistry(registryId) {
     this.atInternet.trackClick({
       name:
-        'public-cloud::pci::projects::project::training::dashboard::attach-registry::confirm',
+        'public-cloud::pci::projects::project::training::registries::delete',
       type: 'action',
     });
 

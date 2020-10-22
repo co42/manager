@@ -36,6 +36,9 @@
                         <oui-tile-actions>
                             <button
                                 data-ng-click="$ctrl.goToregistyDetails()"
+                                data-track-on="click"
+                                data-track-name="public-cloud::pci::projects::project::training::dashboard::registry-details"
+                                data-track-type="action"
                                 class="oui-button oui-button_secondary oui-button_icon-right"
                             >
                                 <span
@@ -177,7 +180,11 @@
                     </span>
                 </div>
                 <div>
-                    <a href="{{ :: $ctrl.billingLink }}"
+                    <a
+                        data-track-on="click"
+                        data-track-name="public-cloud::pci::projects::project::training::dashboard::billing-details"
+                        data-track-type="action"
+                        href="{{ :: $ctrl.billingLink }}"
                         >{{ ::
                         'pci_projects_project_training_dashboard_billing_link' |
                         translate }}</a
@@ -198,6 +205,9 @@
                         <a
                             placement="end"
                             href="{{ $ctrl.userLink }}"
+                            data-track-on="click"
+                            data-track-name="public-cloud::pci::projects::project::training::dashboard::manage-user"
+                            data-track-type="action"
                             class="oui-button oui-button_secondary oui-button_icon-left"
                         >
                             <span
@@ -275,7 +285,7 @@
                             data-ng-click="$ctrl.goToJobs()"
                             class="oui-button oui-button_secondary oui-button_icon-left"
                             data-track-on="click"
-                            data-track-name="public-cloud::pci::projects::project::training::jobs::add-job"
+                            data-track-name="public-cloud::pci::projects::project::training::jobs::all-job"
                             data-track-type="action"
                         >
                             <span

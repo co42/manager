@@ -245,15 +245,27 @@
         </oui-step-form>
 
         <oui-step-form
-            data-header="{{:: 'pci_projects_project_training_jobs_submit_select_resources' | translate  }}"
+            data-header="{{:: 'pci_projects_project_training_jobs_submit_select_config' | translate  }}"
             data-editable="!$ctrl.isSubmit"
         >
-            <p
-                data-translate="{{:: 'pci_projects_project_training_jobs_submit_select_resources_tips' | translate  }}"
-            ></p>
-
             <div class="row d-lg-flex">
                 <div class="col-md-8">
+                    <oui-field
+                        data-label="{{:: 'pci_projects_project_training_jobs_submit_select_config_name' | translate }}"
+                        data-help-text="{{:: 'pci_projects_project_training_jobs_submit_select_config_name_tips' | translate }}"
+                        size="xl"
+                    >
+                        <input
+                            class="oui-input"
+                            type="text"
+                            id="name"
+                            name="name"
+                            data-ng-model="$ctrl.job.name"
+                            required
+                            minlength="3"
+                            maxlength="32"
+                        />
+                    </oui-field>
                     <oui-field data-label="GPU" data-size="auto">
                         <oui-select
                             data-model="$ctrl.selectedGpu"
@@ -270,7 +282,7 @@
                         </oui-select>
                     </oui-field>
                     <oui-field
-                        data-label="{{:: 'pci_projects_project_training_jobs_submit_select_resources_tips_gpu' | translate  }}"
+                        data-label="{{:: 'pci_projects_project_training_jobs_submit_select_config_resources_tips_gpu' | translate  }}"
                         data-size="auto"
                     >
                         <oui-numeric
@@ -286,10 +298,10 @@
                 <div class="col-md-4">
                     <oui-tile
                         class="h-100"
-                        data-heading="{{:: 'pci_projects_project_training_jobs_submit_select_resources_tips_price' | translate  }}"
+                        data-heading="{{:: 'pci_projects_project_training_jobs_submit_select_config_resources_tips_price' | translate  }}"
                     >
                         <oui-tile-definition
-                            data-term="{{:: 'pci_projects_project_training_jobs_submit_select_resources_tips_per_hour' | translate  }}"
+                            data-term="{{:: 'pci_projects_project_training_jobs_submit_select_config_resources_tips_per_hour' | translate  }}"
                         >
                             <oui-tile-description>
                                 <ovh-manager-catalog-price
@@ -342,7 +354,7 @@
                             data-heading="{{:: 'pci_projects_project_training_jobs_info_title_3' | translate  }}"
                         >
                             <oui-tile-definition
-                                data-term="{{:: 'pci_projects_project_training_jobs_submit_select_resources_tips_gpu' | translate  }}"
+                                data-term="{{:: 'pci_projects_project_training_jobs_submit_select_config_resources_tips_gpu' | translate  }}"
                             >
                                 <oui-tile-description>
                                     <span
@@ -356,7 +368,7 @@
                                 </oui-tile-description>
                             </oui-tile-definition>
                             <oui-tile-definition
-                                data-term="{{:: 'pci_projects_project_training_jobs_submit_select_resources_tips_per_hour' | translate  }}"
+                                data-term="{{:: 'pci_projects_project_training_jobs_submit_select_config_resources_tips_per_hour' | translate  }}"
                             >
                                 <oui-tile-description>
                                     <ovh-manager-catalog-price

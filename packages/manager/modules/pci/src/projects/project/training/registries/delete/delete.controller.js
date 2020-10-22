@@ -2,8 +2,9 @@ import get from 'lodash/get';
 
 export default class PciTrainingRegistriesDeleteController {
   /* @ngInject */
-  constructor($translate) {
+  constructor($translate, atInternet) {
     this.$translate = $translate;
+    this.atInternet = atInternet;
   }
 
   $onInit() {
@@ -17,6 +18,12 @@ export default class PciTrainingRegistriesDeleteController {
   }
 
   deleteRegistryConfirm() {
+    this.atInternet.trackClick({
+      name:
+        'public-cloud::pci::projects::project::training::registries::delete::confirm',
+      type: 'action',
+    });
+
     this.loading = true;
 
     this.deleteRegistry(this.registryId)

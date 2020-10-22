@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import remove from 'lodash/remove';
+import { nameGenerator } from '../../../data-processing/data-processing.utils';
 
 export default class PciTrainingJobsSubmitController {
   /* @ngInject */
@@ -22,6 +23,7 @@ export default class PciTrainingJobsSubmitController {
     // Form payload
     this.job = {
       region: null,
+      name: nameGenerator(),
       image: {
         id: null,
       },
@@ -94,7 +96,11 @@ export default class PciTrainingJobsSubmitController {
   }
 
   cliCommand() {
-    const baseCmdArray = ['job run', `--gpu ${this.job.resources.gpu}`];
+    const baseCmdArray = [
+      'job run',
+      `--gpu ${this.job.resources.gpu}`,
+      `--name ${this.job.name}`,
+    ];
 
     if (this.job.volumes && this.job.volumes.length > 0) {
       this.job.volumes
