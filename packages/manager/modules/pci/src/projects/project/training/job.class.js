@@ -12,7 +12,7 @@ export default class Job {
     });
   }
 
-  jobCanBeKilled() {
+  canBeKilled() {
     return includes(
       ['RUNNING', 'SYNCING', 'QUEUED', 'PENDING'],
       this.status.state,

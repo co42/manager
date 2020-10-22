@@ -3,15 +3,24 @@ import { GUIDE_URL } from '../../training.constants';
 
 export default class PciTrainingJobsInfoController {
   /* @ngInject */
-  constructor(CucCloudMessage, CucRegionService, $interval) {
+  constructor(
+    CucCloudMessage,
+    CucRegionService,
+    $interval,
+    PciProjectTrainingJobService,
+  ) {
     this.CucCloudMessage = CucCloudMessage;
     this.CucRegionService = CucRegionService;
     this.$interval = $interval;
+    this.PciProjectTrainingJobService = PciProjectTrainingJobService;
   }
 
   $onDestroy() {
     if (this.interval !== null) {
       this.$interval.cancel(this.interval);
+    }
+    if (this.pullInterval !== null) {
+      this.$interval.cancel(this.pullInterval);
     }
   }
 
@@ -25,6 +34,20 @@ export default class PciTrainingJobsInfoController {
     this.tax = this.unitTax * totalHour;
 
     this.loadMessages();
+
+    if (this.job.canBeKilled()) {
+      this.pullInterval = this.$interval(() => {
+        this.PciProjectTrainingJobService.get(this.projectId, this.jobId).then(
+          (job) => {
+            this.job = job;
+
+            if (this.job.canBeKilled()) {
+              this.$interval.cancel(this.pullInterval);
+            }
+          },
+        );
+      }, 5000);
+    }
 
     if (this.job.status.state === 'RUNNING') {
       this.start = moment();
