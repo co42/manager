@@ -37,6 +37,7 @@
                             data-picture="{{:: preset.logo }}"
                             data-label="{{:: preset.name }}"
                             data-variant="light"
+                            data-on-change="$ctrl.generateName()"
                             data-values="[preset]"
                             data-required
                         >
@@ -86,6 +87,7 @@
                     name="image"
                     data-ng-model="$ctrl.job.image.id"
                     data-required
+                    data-ng-change="$ctrl.generateName()"
                 />
                 <button
                     type="button"
@@ -263,7 +265,7 @@
                             data-ng-model="$ctrl.job.name"
                             required
                             minlength="3"
-                            maxlength="32"
+                            maxlength="64"
                         />
                     </oui-field>
                     <oui-field data-label="GPU" data-size="auto">

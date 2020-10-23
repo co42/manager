@@ -23,7 +23,7 @@ export default class PciTrainingJobsSubmitController {
     // Form payload
     this.job = {
       region: null,
-      name: nameGenerator(),
+      name: null,
       image: {
         id: null,
       },
@@ -138,6 +138,7 @@ export default class PciTrainingJobsSubmitController {
       image: this.job.image.id,
       region: this.job.region.name,
       volumes: this.job.volumes,
+      name: this.job.name,
       resources: {
         cpu: this.job.resources.cpu,
         gpu: this.job.resources.gpu,
@@ -158,6 +159,14 @@ export default class PciTrainingJobsSubmitController {
         [this.selectedGpu] = this.gpus;
       },
     );
+  }
+
+  generateName() {
+    const splitImage = this.job.image.id.split('/');
+    const lastImagePart = splitImage[splitImage.length - 1];
+    const splitTag = lastImagePart.split(':');
+    const prefix = splitTag[0];
+    this.job.name = `${prefix}-${nameGenerator()}`;
   }
 
   onStepperFinish() {
