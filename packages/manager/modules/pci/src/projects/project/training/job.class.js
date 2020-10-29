@@ -14,7 +14,7 @@ export default class Job {
 
   canBeKilled() {
     return includes(
-      ['RUNNING', 'SYNCING', 'QUEUED', 'PENDING'],
+      ['RUNNING', 'INITIALIZING', 'QUEUED', 'PENDING'],
       this.status.state,
     );
   }
@@ -24,14 +24,16 @@ export default class Job {
       case 'FAILED':
       case 'ERROR':
         return 'oui-status_error';
+      case 'INTERRUPTING':
       case 'INTERRUPTED':
         return 'oui-status_warning';
-      case 'DONE':
-        return 'oui-status_info';
-      case 'RUNNING':
-      case 'SYNCING':
-      case 'QUEUED':
       case 'PENDING':
+      case 'QUEUED':
+      case 'INITIALIZING':
+      case 'FINALIZING':
+        return 'oui-status_info';
+      case 'DONE':
+      case 'RUNNING':
         return 'oui-status_success';
       default:
         return 'oui-status_info';
@@ -48,5 +50,11 @@ export default class Job {
 
   isFailed() {
     return this.status.state === 'FAILED';
+  }
+
+  isTerminal() {
+    return ['FAILED', 'INTERRUPTED', 'DONE', 'ERROR'].includes(
+      this.status.state,
+    );
   }
 }
